@@ -23,4 +23,8 @@ mongodump "${args[@]}"
 tar -zcvf $FILE dump/
 rm -rf dump/
 
+/usr/local/bin/s3cmd put $PARAMS "$FILE" "$S3_PATH"
+
+rm -rf "$FILE"
+
 echo "Job finished: $(date)"
